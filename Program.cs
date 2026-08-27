@@ -18,11 +18,11 @@ namespace aspnetcore_services
             builder.Services.AddTransient<IMyService, FirstService>();
 
             // 2) Scoped: при кожному HTTP-запиті створюється новий екземпляр FirstService, який буде використовуватися для всіх DI-запитів на IMyService протягом цього запиту
-            // builder.Services.AddScoped<Services.Interfaces.IMyService, Services.FirstService>();
+            // builder.Services.AddScoped<IMyService, FirstService>();
 
             // 3) Singleton: створюється один екземпляр FirstService на весь час життя додатку, який буде використовуватися для всіх DI-запитів на IMyService
             // перевірити можна, якщо зробити оновлення сторінки кілька разів - в консолі буде виводитися один і той же Id
-            // builder.Services.AddSingleton<Services.Interfaces.IMyService, Services.FirstService>();
+            // builder.Services.AddSingleton<IMyService, FirstService>();
 
             // небажаний варіант реєстрації, оскільки нема гнучкості на рівні контролера, доведеться змінювати код контролера, якщо потрібно буде змінити реалізацію сервісу
             builder.Services.AddTransient<SecondService>();
